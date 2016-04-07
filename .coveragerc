@@ -1,0 +1,5 @@
+[run]
+include = sdis/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
