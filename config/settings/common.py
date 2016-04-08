@@ -29,7 +29,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles',
 
     # Useful template tags:
-    # 'django.contrib.humanize',
+    'django.contrib.humanize',
 
     # Admin
     'django.contrib.admin',
@@ -82,7 +82,15 @@ FIXTURE_DIRS = (
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+#EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+
+# DPaW email settings
+EMAIL_HOST = env('EMAIL_HOST', default='email.host')
+EMAIL_PORT = env('EMAIL_PORT', default=25)
+DEFAULT_FROM_EMAIL = '"SDIS" <sdis-noreply@dpaw.wa.gov.au>'
+ENVELOPE_EMAIL_RECIPIENTS = ['sdis@DPaW.wa.gov.au']
+ENVELOPE_USE_HTML_EMAIL = True
+
 
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
