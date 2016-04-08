@@ -1,4 +1,4 @@
-sdis
+SDIS
 ==============================
 
 Project documentation, approval and reporting
