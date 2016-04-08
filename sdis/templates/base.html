@@ -30,7 +30,7 @@
   </head>
 
   <body>
-
+    <div class="mainarea">
     <div class="m-b">
       <nav class="navbar navbar-dark navbar-static-top bg-inverse">
         <div class="container">
@@ -91,8 +91,21 @@
       {% endblock content %}
 
     </div> <!-- /container -->
-
     {% block modal %}{% endblock modal %}
+    </div><!-- /mainarea -->
+
+    {% block footer %}
+    <!-- Footer -->
+    <div id="footer">
+        <div class="container">
+            <p class="nav-link credit">
+                &copy; 2012&ndash;2016 Department of Parks and Wildlife
+                {% block extra_footer %}{% endblock %}
+            </p>
+        </div><!-- /.container -->
+    </div><!-- /.wrap -->
+    <!-- /Footer -->
+    {% endblock %}
 
     <!-- Le javascript
     ================================================== -->

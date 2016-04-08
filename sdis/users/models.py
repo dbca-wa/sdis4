@@ -284,3 +284,40 @@ class User(AbstractBaseUser, PermissionsMixin):
                 self.last_name,
                 self.get_affiliation())
         return full_name.strip()
+
+    @property
+    def abbreviated_name(self):
+        return self.get_abbreviated_name()
+
+    def get_abbreviated_name(self):
+        """
+        If initials are supplied, returns initials and surname, else
+        given name and surname.
+        """
+        if self.is_group:
+            return self.get_full_name()
+        else:
+            full_name = "{0} {1} {2} {3}".format(
+                    self.get_title(),
+                    self.middle_initials, # remember these are full initials
+                    self.last_name,
+                    self.get_affiliation())
+        return full_name.strip()
+
+    @property
+    def abbreviated_name_no_affiliation(self):
+        return self.get_abbreviated_name_no_affiliation()
+
+    def get_abbreviated_name_no_affiliation(self):
+        """
+        If initials are supplied, returns initials and surname, else
+        given name and surname.
+        """
+        if self.is_group:
+            return self.get_full_name()
+        else:
+            full_name = "{0} {1} {2}".format(
+                    self.get_title(),
+                    self.middle_initials, # remember these are full initials
+                    self.last_name)
+        return full_name.strip()
