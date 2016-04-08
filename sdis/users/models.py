@@ -15,6 +15,9 @@ class UserManager(BaseUserManager):
 #        super(BaseUserManager, self).__init__()
 #        self.model = get_user_model()
 
+    def get_short_name(self):
+        return self.username
+
     def _create_user(self, username, password, is_staff, is_superuser,
                      **extra_fields):
         now = timezone.now()
@@ -217,9 +220,67 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    USERNAME_FIELD = "username"
+    objects = UserManager()
+
+    DEFAULT_GROUP = 'Users'
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = []
+
     def __str__(self):
         return self.username
 
         def get_absolute_url(self):
             return reverse('users:detail', kwargs={'username': self.username})
+
+    #--------------------------------------------------------------------------#
+    # Names
+    def get_title(self):
+        """Returns the title if supplied and user is_external
+        SANITY WARNING this function will HIDE the title for internal staff
+        """
+        return self.title if (self.title and self.is_external) else ""
+
+    def get_middle_initials(self):
+        i = self.middle_initials if self.middle_initials else ""
+        if len(i)>1:
+            return i[1:]
+        else:
+            return ""
+
+    def guess_first_initial(self):
+        return self.first_name[0] if self.first_name else ""
+
+    def get_affiliation(self):
+        """Returns the affiliation in parentheses if provided, or an empty string
+        """
+        a = "({0})".format(self.affiliation) if self.affiliation else ""
+        return a
+
+    #--------------------------------------------------------------------------#
+    # Required for admin
+    @property
+    def short_name(self):
+        return self.first_name if self.first_name else self.fullname
+
+    def get_short_name(self):
+        """Returns the first name as short name for the user
+        """
+        return self.first_name
+
+    @property
+    def full_name(self):
+        return self.get_full_name()
+
+    def get_full_name(self):
+        """Returns title + first name + initials + last name + affiliation
+        """
+        if self.is_group:
+            full_name = "{0} {1}".format(self.group_name, self.get_affiliation())
+        else:
+            full_name = "{0} {1} {2} {3} {4}".format(
+                self.get_title(),
+                self.first_name,
+                self.get_middle_initials(),
+                self.last_name,
+                self.get_affiliation())
+        return full_name.strip()
