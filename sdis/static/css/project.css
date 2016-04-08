@@ -25,11 +25,16 @@ html, body {
   height: 100%; }
 
 /* Wrapper for page content to push down footer */
-#mainarea {
+.mainarea {
   min-height: 100%;
   background-image: url("/static/images/80mile.jpg");
   background-size: cover;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  padding-bottom: 60px; }
+
+.push15pxdown {
+  margin-top: 50px;
+  padding-top: 15px; }
 
 #footer {
   width: 100%;

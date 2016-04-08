@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Project documentation, approval and reporting">
     <meta name="author" content="Dept Parks and Wildlife WA">
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico'%}" />
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -30,9 +31,9 @@
   </head>
 
   <body>
-    <div id="mainarea">
+    <div class="mainarea">
     <div class="m-b">
-      <nav class="navbar navbar-dark navbar-static-top bg-inverse">
+      <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
         <div class="container">
           <a class="navbar-brand" href="/">SDIS</a>
           <button type="button" class="navbar-toggler hidden-sm-up pull-xs-right" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
@@ -79,7 +80,7 @@
     </div>
 
 
-    <div class="container">
+    <div class="container push15pxdown lift50pxup">
 
       {% if messages %}
           {% for message in messages %}
@@ -87,9 +88,7 @@
           {% endfor %}
       {% endif %}
 
-      {% block content %}
-        <p>The content goes here.</p>
-      {% endblock content %}
+      {% block content %}{% endblock content %}
 
     </div> <!-- /container -->
 

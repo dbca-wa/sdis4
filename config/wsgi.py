@@ -12,14 +12,17 @@ that later delegates to the Django one. For example, you could introduce WSGI
 middleware here, or combine a Django application with an application of another
 framework.
 """
+import confy
 import os
+from django.core.wsgi import get_wsgi_application
+from whitenoise.django import DjangoWhiteNoise
+
+confy.read_environment_file(envfile='.env')
 
 if os.environ.get("DJANGO_SETTINGS_MODULE") == "config.settings.production":
     import newrelic.agent
     newrelic.agent.initialize()
-from django.core.wsgi import get_wsgi_application
-from whitenoise.django import DjangoWhiteNoise
-if os.environ.get("DJANGO_SETTINGS_MODULE") == "config.settings.production":
+
     from raven.contrib.django.raven_compat.middleware.wsgi import Sentry
 
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks

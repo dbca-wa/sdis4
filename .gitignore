@@ -77,3 +77,6 @@ hitchreqs.txt
 
 # MailHog binary
 mailhog
+
+# Sphinx docs
+docs/_build/

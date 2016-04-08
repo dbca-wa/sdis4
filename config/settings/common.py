@@ -39,6 +39,7 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'dpaw_utils', # DPaW SSO
 )
 
 # Apps specific for this project go here.
@@ -60,6 +61,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # DPaW SSO
+    'dpaw_utils.middleware.SSOLoginMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
