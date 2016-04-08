@@ -50,18 +50,14 @@ $red: #b94a48;
   display: block !important;
 }
 
-#body {
-    background-image:url('/static/images/80mile.jpg');
-    height: 100% !important;
-    background-size: cover;
-    background-attachment: fixed;
-    //padding-top: 55px;    /* Pad top by floating navbar height */
-    margin-bottom: 50px; /* Pad bottom by footer height */
+html, body {
+    height: 100%;
 }
 
-.mainarea {
+/* Wrapper for page content to push down footer */
+#mainarea {
+    min-height: 100%;
     background-image:url('/static/images/80mile.jpg');
-    min-height: 800px;
     background-size: cover;
     background-attachment: fixed;
 }

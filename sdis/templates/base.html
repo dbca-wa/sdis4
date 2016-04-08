@@ -30,7 +30,7 @@
   </head>
 
   <body>
-    <div class="mainarea">
+    <div id="mainarea">
     <div class="m-b">
       <nav class="navbar navbar-dark navbar-static-top bg-inverse">
         <div class="container">
@@ -78,6 +78,7 @@
       </nav>
     </div>
 
+
     <div class="container">
 
       {% if messages %}
@@ -91,11 +92,11 @@
       {% endblock content %}
 
     </div> <!-- /container -->
-    {% block modal %}{% endblock modal %}
-    </div><!-- /mainarea -->
 
-    {% block footer %}
+    {% block modal %}{% endblock modal %}
+
     <!-- Footer -->
+    {% block footer %}
     <div id="footer">
         <div class="container">
             <p class="nav-link credit">
@@ -103,10 +104,11 @@
                 {% block extra_footer %}{% endblock %}
             </p>
         </div><!-- /.container -->
-    </div><!-- /.wrap -->
-    <!-- /Footer -->
+    </div><!-- /#footer -->
     {% endblock %}
+    <!-- /Footer -->
 
+    </div> <!-- /mainarea -->
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
