@@ -68,8 +68,12 @@ node_modules/
 # User-uploaded media
 sdis/media/
 
+# Static files
+staticfiles/*
+
 # Hitch directory
 tests/.hitch
+hitchreqs.txt
 
 # MailHog binary
 mailhog
