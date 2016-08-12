@@ -80,3 +80,9 @@ mailhog
 
 # Sphinx docs
 docs/_build/
+
+# Database/fixture dumps
+*.pgdump
+*.dump
+*.db
+*.sqlite3
